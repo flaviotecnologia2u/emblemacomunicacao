@@ -1,0 +1,217 @@
+<? 
+include "include/config/config.php";
+include "include/captura_post.php";
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<title>Emblema | Comunicação & Marketing</title>
+<meta charset="utf-8">
+<meta name = "format-detection" content = "telephone=no" />
+<link rel="icon" href="images/icon.png">
+<link rel="shortcut icon" href="images/icon.png" />
+<link rel="stylesheet" href="css/contact-form.css">
+<link rel="stylesheet" href="css/touchTouch.css">
+<link rel="stylesheet" href="css/owl.carousel.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.1.1.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/script.js"></script> 
+<script src="js/superfish.js"></script>
+<script src="js/jquery.equalheights.js"></script>
+<script src="js/jquery.mobilemenu.js"></script>
+<script src="js/jquery.ui.totop.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script src="js/touchTouch.jquery.js"></script>
+<script src="js/TMForm.js"></script>
+<script src="js/modal.js"></script>
+
+<script>
+ $(window).load(function(){
+  $().UItoTop({ easingType: 'easeOutQuart' });
+
+  $("#owl").owlCarousel({
+    items : 4, //10 items above 1000px browser width
+    itemsDesktop : [995,1], //5 items between 1000px and 901px
+    itemsDesktopSmall : [767, 1], // betweem 900px and 601px
+    itemsTablet: [700, 1], //2 items between 600 and 0
+    itemsMobile : [479, 1], // itemsMobile disabled - inherit from itemsTablet option
+    navigation : true,
+    pagination :  false
+  });
+    $('.gallery .gall_item').touchTouch();
+ }); 
+
+
+
+</script>
+<!--[if lt IE 8]>
+ <div style=' clear: both; text-align:center; position: relative;'>
+   <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+     <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+   </a>
+</div>
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<link rel="stylesheet" media="screen" href="css/ie.css">
+<![endif]-->
+</head>
+
+<body>
+<div class="menu_bg"></div>
+<header>
+  
+  <div class="navigation single-page-nav">
+    <div class="container_12">
+      <div class="grid_12">
+        <h1 class="logo">
+          <a href="index.php"><img src="images/logo1.png" alt=""></a>
+        </h1>
+        <nav>
+          <ul>
+           <li><a href="#servicos" class="current">Serviços</a></li>
+           <li><a href="#portfolio">Portfolio</a></li>
+           <li><a href="#emblema">A Emblema</a></li>
+           <li><a href="#contato">Contato</a></li>
+         </ul>
+        </nav>
+      </div> 
+    </div>
+  </div>    
+  <div class="container_12">
+    <div class="grid_12 ">     
+      <h2>Aqui nascem as melhores ideias do Brasil! <br>
+        <span></span>
+      </h2>      
+      <div class="socials">
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google-plus"></a>
+      </div>
+   </div> 
+    <div class="clear"></div>  
+  </div> 
+</header>
+<section id="portfolio" class="page page_bg__1">
+  <div class="container_12">
+    <div class="grid_12">
+      <h3 class="head__1">Portfolio</h3>
+	<?php
+	   define('PAGE_ID', '225896334260618');
+	   define('APP_ID','');
+	   define('APP_SECRET','');
+	   include("facebook/phpcUrl.php");
+	   $face = new FacePageAlbum(PAGE_ID, $_GET['aid'], $_GET['aurl'], APP_ID, APP_SECRET);
+	?>
+
+    </div>
+    <div class="clear"></div>
+  </div>
+</section>
+<section id="contato" class="page">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58868.174317934565!2d-47.1692188!3d-22.7556972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c895736c9dbcab%3A0xaff166a9c4289aef!2sPaul%C3%ADnia+-+SP!5e0!3m2!1spt-BR!2sbr!4v1412856762850" width="600" height="450" frameborder="0" style="border:0" zoom="5"></iframe>        
+  <div class="contacts_bg">
+    <div class="container_12">
+      <div class="grid_12">
+        <h3 class="head__1">Contatos</h3>
+      </div>
+      <div class="grid_5">
+        <div class="text2">Endereço</div>
+        <p class="fz__1">Venha até o nosso escritório! </p>
+        Emblema comunicação & marketing <br>
+
+		<?
+			$sqlcontato = mysql_query("SELECT content FROM page WHERE id = '36' ");
+				while ($sq = mysql_fetch_array($sqlcontato)) {
+					$contato = $sq[content];
+			}
+			echo $contato;
+		?>
+
+      </div>
+      <div class="grid_6 prefix_1">
+        <div class="text2">Deixe uma mensagem</div>
+              <form id="contact-form">
+                  <div class="contact-form-loader"></div>
+                  <fieldset>
+                    <label class="name">
+                      <input type="text" name="name" placeholder="Nome" value="" data-constraints="@Required @JustLetters"  />
+                      <span class="empty-message">*Necessário</span>
+                      <span class="error-message">*Não parece ser um nome válido</span>
+                    </label>
+                   
+                    <label class="email">
+                      <input type="text" name="email" placeholder="E-mail" value="" data-constraints="@Required @Email" />
+                      <span class="empty-message">*Necessário.</span>
+                      <span class="error-message">*Não parece ser um nome válidol.</span>
+                    </label>
+                    <label class="phone">
+                      <input type="text" name="phone" placeholder="Telefone" value="" />
+                    </label>
+                   
+                    <label class="message">
+                      <textarea name="message" placeholder="Mensagem" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+                        <span class="empty-message">*Necessário.</span>
+                      <span class="error-message">*Não parece ser um nome válidol.</span>
+                    </label>
+                    <div class="ta__right">
+                      <a href="#" class="btn" data-type="submit">Enviar</a>
+                    </div>
+                  </fieldset> 
+                  <div class="modal fade response-message">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          Mensagem enviada.
+                        </div>      
+                      </div>
+                    </div>
+                  </div>
+                </form>   
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</section>
+<!--==============================
+              footer
+=================================-->
+<footer id="footer">
+  <div class="container_12">
+    <div class="grid_12"> 
+      <div class="copyright"><span class="color1">DESIGN BY EMBLEMA</span> &copy; <span id="copyright-year">2014</span>
+     </div>
+      </div>
+    </div> 
+  <div class="clear"></div>
+</footer>
+<a href="#" id="toTop" class="fa fa-chevron-up"></a>
+<script src="js/jquery.singlePageNav.min.js"></script>
+        <script>
+
+            // Prevent console.log from generating errors in IE for the purposes of the demo
+            if ( ! window.console ) console = { log: function(){} };
+
+            // The actual plugin
+            $('.single-page-nav').singlePageNav({
+                offset: $('.single-page-nav').outerHeight(),
+                filter: ':not(.external)',
+                updateHash: true,
+                beforeStart: function() {
+                    console.log('begin scrolling');
+                },
+                onComplete: function() {
+                    console.log('done scrolling');
+                }
+            });
+        </script>
+</body>
+</html>
+
+  
